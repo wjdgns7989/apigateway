@@ -13,6 +13,15 @@ spring:
           uri: http://localhost:8081
           predicates:
             - Path=/store/**
+          filters:
+            - StoreServiceFilter
+
+        - id: svc2-user
+          uri: http://localhost:8082
+          predicates:
+            - Path=/user/**
+          filters:
+            - UserServiceFilter
 server:
   port: 80
 
