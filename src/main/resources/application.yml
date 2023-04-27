@@ -10,7 +10,8 @@ spring:
 
       routes:
         - id: svc1-store
-          uri: http://localhost:8081
+          # uri: http://localhost:8081
+          uri: lb://msa-svc1-store
           predicates:
             - Path=/store/**
           filters:
@@ -26,6 +27,15 @@ server:
   port: 80
 
 
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+
+  client:
+    register-with-eureka: true
+    fetch-resgistry: true
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
 
 # AP ????
 logging:
