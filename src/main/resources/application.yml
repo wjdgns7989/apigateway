@@ -18,7 +18,8 @@ spring:
             - StoreServiceFilter
 
         - id: svc2-user
-          uri: http://localhost:8082
+          # uri: http://localhost:8082
+          uri: lb://msa-svc2-user
           predicates:
             - Path=/user/**
           filters:
